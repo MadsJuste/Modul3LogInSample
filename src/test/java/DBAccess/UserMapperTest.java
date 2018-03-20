@@ -26,17 +26,17 @@ public class UserMapperTest {
 //    (4,'someone@nowhere.com','sesam','customer');
 
     private static Connection testConnection;
-    private static String USER = "testinguser";
-    private static String USERPW = "try1try2tryAgain";
-    private static String DBNAME = "useradminTest";
-    private static String HOST = "46.101.253.149";
+    private static String USER = "root";
+    private static String USERPW = "admin";
+    private static String DBNAME = "useradmin";
+    private static String HOST = "159.89.99.105";
 
     @Before
     public void setUp() {
         try {
             // awoid making a new connection for each test
             if ( testConnection == null ) {
-                String url = String.format( "jdbc:mysql://%s:3306/%s", HOST, DBNAME );
+                String url = String.format( "jdbc:mysql://159.89.99.105:3306/useradmin");
                 Class.forName( "com.mysql.jdbc.Driver" );
 
                 testConnection = DriverManager.getConnection( url, USER, USERPW );
