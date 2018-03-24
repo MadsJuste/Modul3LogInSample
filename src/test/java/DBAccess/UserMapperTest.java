@@ -26,7 +26,7 @@ public class UserMapperTest {
 //    (4,'someone@nowhere.com','sesam','customer');
 
     private static Connection testConnection;
-    private static String USER = "root";
+    private static String USER = "Juste";
     private static String USERPW = "admin";
     private static String DBNAME = "useradmin";
     private static String HOST = "159.89.99.105";
@@ -36,7 +36,7 @@ public class UserMapperTest {
         try {
             // awoid making a new connection for each test
             if ( testConnection == null ) {
-                String url = String.format( "jdbc:mysql://159.89.99.105:3306/useradmin");
+                String url = String.format( "jdbc:mysql://159.89.99.105/useradmin");
                 Class.forName( "com.mysql.jdbc.Driver" );
 
                 testConnection = DriverManager.getConnection( url, USER, USERPW );
@@ -45,9 +45,9 @@ public class UserMapperTest {
             }
             // reset test database
             try ( Statement stmt = testConnection.createStatement() ) {
-                stmt.execute( "drop table if exists Users" );
-                stmt.execute( "create table Users like UsersTest" );
-                stmt.execute( "insert into Users select * from UsersTest" );
+               /* stmt.execute( "drop table if exists Users" );
+                stmt.execute( "create table Users like UsersTest" );*/
+                stmt.execute( "SELECT * user" );
             }
 
         } catch ( ClassNotFoundException | SQLException ex ) {
@@ -55,13 +55,13 @@ public class UserMapperTest {
             System.out.println( "Could not open connection to database: " + ex.getMessage() );
         }
     }
-
+/*
     @Test
     public void testSetUpOK() {
         // Just check that we have a connection.
         assertNotNull( testConnection );
     }
-
+*/
     @Test
     public void testLogin01() throws LoginSampleException {
         // Can we log in

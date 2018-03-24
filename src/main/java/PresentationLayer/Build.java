@@ -23,7 +23,7 @@ public class Build extends Command{
                 String hight = request.getParameter( "hight" );
                 String width = request.getParameter( "width" );
                 String depth = request.getParameter("depth");
-                Build build = new
+                
         return "hej";
     }
     
