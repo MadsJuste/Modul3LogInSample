@@ -14,5 +14,20 @@
     <body>
         <h1>Hello <%=request.getParameter( "email" )%> </h1>
         You are now logged in as a customer of our wonderful site.
+        
+        <h2>Purchase legohouse</h2>
+        
+        <form action="Control" method="post">        
+            <input type="hidden" name="origin" value="update" />
+            <input type="submit" value="Purchase" />
+        </form>
+        
+        <h2>See privious purchases</h2>
+        
+        <form action="Control" method="post">
+            <input type="hidden" name="origin" value="delete" />
+            <input type="submit" value="seePre" />
+        </form>
+        
     </body>
 </html>

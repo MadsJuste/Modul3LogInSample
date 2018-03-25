@@ -22,9 +22,11 @@ public class Build extends Command{
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
                 String hight = request.getParameter( "hight" );
                 String width = request.getParameter( "width" );
-                String depth = request.getParameter("depth");
-                
-        return "hej";
+                String length = request.getParameter("length");
+                HttpSession session = request.getSession();
+                session.getAttribute("user");
+            //   Build build = LogicFacade.build( hight, width, length );
+        return "Ordering";
     }
     
 }

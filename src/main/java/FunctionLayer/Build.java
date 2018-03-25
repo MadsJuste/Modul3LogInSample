@@ -88,4 +88,33 @@ public class Build {
     public void setDepth(int depth){
         this.depth = depth;
     }
+    
+    public int getFour(){
+        return four;
+    }
+    
+    public void setFour(int four){
+        this.four = four;
+    }
+    
+    public int getTwo(){
+        return two;
+    }
+    
+    public void setTwo(int two){
+        this.two = two;
+    }
+    
+    public int getOne(){
+        return one;
+    }
+    
+    public void setOne(int one){
+        this.one = one;
+    }
+    
+    
+    
+    
+    
 }

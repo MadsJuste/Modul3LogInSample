@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.Build;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +39,7 @@ public class UserMapper {
     public static User login( String email, String password ) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT id, role FROM user "
+            String SQL = "SELECT user_id, role FROM user "
                     + "WHERE email=? AND password=?";
             PreparedStatement ps = con.prepareStatement( SQL );
             ps.setString( 1, email );
@@ -46,7 +47,7 @@ public class UserMapper {
             ResultSet rs = ps.executeQuery();
             if ( rs.next() ) {
                 String role = rs.getString( "role" );
-                int id = rs.getInt( "id" );
+                int id = rs.getInt( "user_id" );
                 User user = new User( email, password, role );
                 user.setId( id );
                 return user;
@@ -57,5 +58,9 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+    
+   /* public static Build build(int hight, int width, length, int userID){
+        
+    }*/
 
 }
