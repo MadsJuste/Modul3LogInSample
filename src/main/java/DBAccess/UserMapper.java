@@ -59,8 +59,25 @@ public class UserMapper {
         }
     }
     
-   /* public static Build build(int hight, int width, length, int userID){
-        
-    }*/
+    public static Build build(Build build, int id) throws LoginSampleException{
+         try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO `order` (length, width, hight, fourblock, twoblock, oneblock, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1,build.getLength());
+            ps.setInt(2,build.getWidth());
+            ps.setInt(3,build.getHight());
+            ps.setInt(4,build.getFour());
+            ps.setInt(5,build.getTwo());
+            ps.setInt(6,build.getOne());
+            ps.setInt(7,id);
+            
+            ps.executeUpdate();
+          
+            return build;
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new LoginSampleException( ex.getMessage());
+        }   
+    }
 
 }

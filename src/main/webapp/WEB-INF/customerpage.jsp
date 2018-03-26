@@ -17,16 +17,25 @@
         
         <h2>Purchase legohouse</h2>
         
-        <form action="Control" method="post">        
-            <input type="hidden" name="origin" value="update" />
-            <input type="submit" value="Purchase" />
+        <form name="purchase" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="purchase" />
+                    Hight in blocks:<br>
+                    <input type="text" name="hight" value="1">
+                    <br>
+                    width in dots:<br>
+                    <input type="text" name="width" value="1">
+                    <br>
+                    length in dots:<br>
+                    <input type="text" name="length" value="1">
+                    <br>
+            <input type="submit" value="purchase" />
         </form>
         
         <h2>See privious purchases</h2>
         
-        <form action="Control" method="post">
-            <input type="hidden" name="origin" value="delete" />
-            <input type="submit" value="seePre" />
+        <form name="checkPur" action="FrontController" method="post">
+            <input type="hidden" name="origin" value="checkPur" />
+            <input type="submit" value="see previous order" />
         </form>
         
     </body>

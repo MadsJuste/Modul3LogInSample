@@ -13,7 +13,7 @@
     </head>
     <body>
         <h2>Choose size of the house. Length and width in number of dots and hight in numbers of blocks </h2>
-        <form action="Control" method="post">
+        <form action="FrontController" method="post">
             <input type="text" name="length" value="" placeholder="length" />
             <input type="text" name="width" value="" placeholder="width" />
             <input type="text" name="hight" value="" placeholder="hight" />

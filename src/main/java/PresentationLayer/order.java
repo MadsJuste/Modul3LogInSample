@@ -9,6 +9,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.Build;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,16 +17,17 @@ import javax.servlet.http.HttpSession;
  *
  * @author Juste
  */
-public class Build extends Command{
+public class order extends Command{
     
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-                String hight = request.getParameter( "hight" );
-                String width = request.getParameter( "width" );
-                String length = request.getParameter("length");
+                int hight = Integer.parseInt(request.getParameter( "hight" ));
+                int width = Integer.parseInt(request.getParameter( "width" ));
+                int length = Integer.parseInt(request.getParameter( "length" )); 
                 HttpSession session = request.getSession();
-                session.getAttribute("user");
-            //   Build build = LogicFacade.build( hight, width, length );
+                User user = (User) session.getAttribute("user");
+                int id = user.getId();
+                Build build = LogicFacade.build( hight, width, length, 1 );
         return "Ordering";
     }
     

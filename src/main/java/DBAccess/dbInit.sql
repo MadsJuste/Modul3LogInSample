@@ -23,10 +23,11 @@ CREATE TABLE `order`(
 `twoblock` int(11) NOT NULL,
 `oneblock` int(11) NOT NULL,
 `user_id` int(11) NOT NULL,
-`status` bit(1) NOT NULL,
+`status` int(11) NOT NULL,
 PRIMARY KEY (`order_id`),
 FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
-);
+)ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES 
 (1,'jens@somewhere.com','jensen','customer'),

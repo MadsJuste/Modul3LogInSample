@@ -17,5 +17,11 @@ public class LogicFacade {
         UserMapper.createUser( user );
         return user;
     }
+    
+    public static Build build(int hight,int width, int length , int id) throws LoginSampleException{
+        Build build = new Build(hight, width, length);
+        UserMapper.build(build, id);
+        return build;
+    }
 
 }

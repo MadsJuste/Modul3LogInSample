@@ -7,6 +7,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.Build;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -68,6 +69,13 @@ public class UserMapperTest {
         User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertTrue( user != null );
     }
+    
+    @Test
+    public void testWrite() throws LoginSampleException {
+        Build build = new Build(2, 8, 12);
+        UserMapper.build(build , 1);
+        assertTrue(build != null);
+    }
 
     @Test( expected = LoginSampleException.class )
     public void testLogin02() throws LoginSampleException {
@@ -81,7 +89,7 @@ public class UserMapperTest {
         User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertEquals( "customer", user.getRole() );
     }
-    /*
+   /*
     @Test
     public void testCreateUser01() throws LoginSampleException {
         // Can we create a new user - Notice, if login fails, this will fail
