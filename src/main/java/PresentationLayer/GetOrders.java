@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 
+import FunctionLayer.Build;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
@@ -21,11 +22,15 @@ public class GetOrders extends Command{
     
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            int id = user.getId();
-            int rows = LogicFacade.rows(id);
-            session.setAttribute("rows",rows);
+           int oid = Integer.parseInt(request.getParameter( "orderID" ));
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("user");
+                int id = user.getId();
+                Build build = LogicFacade.list(id,oid);
+                session.setAttribute( "hight", build.getHight());
+                session.setAttribute( "width", build.getWidth());
+                session.setAttribute( "length", build.getLength());
+                session.setAttribute( "status", build.getStatus());            
         return "ordertable";
     } 
 }

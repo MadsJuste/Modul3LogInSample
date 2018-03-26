@@ -35,7 +35,7 @@
         <h2>Find Order</h2>
         <form name="Find" action="FrontController" method="post">        
             <input type="hidden" name="command" value="Find" />  
-                length in dots:<br>
+                Order ID:<br>
                     <input type="text" name="orderID" value="1">
                     <br>
             <input type="submit" value="Find" />
@@ -45,6 +45,9 @@
         
         <form name="check" action="FrontController" method="post">
             <input type="hidden" name="command" value="check" />
+            Order ID:<br>
+                    <input type="text" name="orderID" value="1">
+                    <br>
             <input type="submit" value="check" />
         </form>
         

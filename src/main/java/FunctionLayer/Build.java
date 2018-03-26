@@ -14,15 +14,35 @@ public class Build {
     private int hight;
     private int width;
     private int length; 
-    private int four;
-    private int two;
-    private int one;
-    private int id;
     private int status;
+    
+    private int fourOne;
+    private int fourTwo;
+    private int fourThree;
+    private int fourFour;
+    private int fourTotal;
+    
+    private int twoOne;
+    private int twoTwo;
+    private int twoThree;
+    private int twoFour;
+    private int twoTotal;
+    
+    private int oneOne;
+    private int oneTwo;
+    private int oneThree;
+    private int oneFour;
+    private int oneTotal;
+    
+    private int id;
+   
+    
     public Build(int hight, int width, int length, int status){
         this.hight = hight;
         this.width = width;
         this.length = length;
+        this.status = status;
+        
         setBlocks();
     }
 
@@ -59,10 +79,15 @@ public class Build {
             break;       
         }
         
-        one = (length1 + width1) * hight * 2;
-        two = (length2 + width2) * hight * 2;
-        four =(length4 + width4) * hight * 2;
-        
+        oneOne = oneThree = (width1) * hight;
+        oneTwo = oneFour = (length1) * hight;
+        twoOne = twoThree = (width2) * hight;
+        twoTwo = twoFour = (length2) * hight;
+        fourOne = fourThree =(width4) * hight;
+        fourTwo = fourFour =(length4) * hight;
+        oneTotal = oneOne + oneTwo + oneThree + oneFour;
+        twoTotal = twoOne + twoTwo + twoThree + twoFour;
+        fourTotal = fourOne + fourTwo + fourThree + fourFour;
         }
     
     
@@ -94,28 +119,113 @@ public class Build {
         this.length = length;
     }
     
-    public int getFour(){
-        return four;
+    public int getFourOne(){
+        return fourOne;
     }
     
     public void setFour(int four){
-        this.four = four;
+        this.fourOne = four;
+    }
+    public int getFourTwo(){
+        return fourTwo;
     }
     
-    public int getTwo(){
-        return two;
+    public void setFourTwo(int four){
+        this.fourTwo = four;
+    }
+    public int getFourThree(){
+        return fourThree;
     }
     
-    public void setTwo(int two){
-        this.two = two;
+    public void setFourThree(int four){
+        this.fourThree = four;
+    }
+    public int getFourFour(){
+        return fourFour;
     }
     
-    public int getOne(){
-        return one;
+    public void setFourFour(int four){
+        this.fourFour = four;
     }
     
-    public void setOne(int one){
-        this.one = one;
+    public int getTwoOne(){
+        return twoOne;
+    }
+    public void setTwoOne(int two){
+        this.twoOne = two;
+    }
+    public void setTwoTwo(int two){
+        this.twoTwo = two;
+    }
+    public int getTwoTwo(){
+        return twoTwo;
+    }
+    
+    public void setTwoThree(int two){
+        this.twoThree = two;
+    }
+    public int getTwoThree(){
+        return twoThree;
+    }
+    
+    public void setTwoFour(int two){
+        this.twoFour = two;
+    }
+    public int getTwoFour(){
+        return twoFour;
+    }
+    
+  
+    
+    public int getOneOne(){
+        return oneOne;
+    }
+    
+    public void setOneOne(int one){
+        this.oneOne = one;
+    }
+     public int getOneTwo(){
+        return oneTwo;
+    }
+    
+    public void setOneTwo(int one){
+        this.oneTwo = one;
+    }
+     public int getOneThree(){
+        return oneThree;
+    }
+    
+    public void setOneThree(int one){
+        this.oneThree = one;
+    }
+     public int getOneFour(){
+        return oneFour;
+    }
+    
+    public void setOneFour(int one){
+        this.oneFour = one;
+    }
+    
+    public int getFourTotal(){
+        return fourTotal;
+    }
+    
+    public void setfourTotal(int i){
+        this.fourTotal = i;
+    }
+    
+    public int getTwoTotal(){
+        return twoTotal;
+    }
+    
+    public void setTwoTotal(int i){
+        this.twoTotal = i;
+    }
+    public int getOneTotal(){
+        return oneTotal;
+    }
+    public void setOneTotal(int i){
+        this.oneTotal=i;
     }
     public int getID(){
         return id;

@@ -12,28 +12,29 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <% 
-           int r = (Integer) session.getAttribute("rows");
-       %>
-       
-        <center>
-            
-            <label>Order</label>
-                <select class="form-control" style="width: 250px;">
-                    <option value="-1">Select order</option>
-                    <% 
-                    try{ 
-                    for(int i=1;i <= r; i++){
-                    %> 
-                     <option value="<%=i%>" name="orderID"><%=i%></option>            
-                    <%
-                    }
-                    }catch(Exception ex){
-                        ex.printStackTrace();
-                        out.println("Error " +ex.getMessage());
-                    }
-                    %>
-                </select>       
-        </center>
+     <h1>Table for order <%=request.getParameter("orderID")%></h1>
+        <table border = "1">
+            <thead>
+                <tr>
+                    <th> Højde </th>
+                    <th> Bredde</th>  
+                    <th> Længde</th> 
+                    <th> status</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><%=session.getAttribute("hight")%></th>
+                    <th><%=session.getAttribute("width")%></th>
+                    <th><%=session.getAttribute("length")%></th>
+                    <th><%=session.getAttribute("status")%></th>
+                </tr>              
+            </tbody>
+        </table>    
+                
+        <form name="Back" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="Back" />
+            <input type="submit" value="Back" />
+        </form>
      </body>
 </html>

@@ -17,21 +17,37 @@
             <thead>
                 <tr>
                     <th> type </th>
-                    <th> antal</th>   
+                    <th> side 1</th>  
+                    <th> side 2</th> 
+                    <th> side 3</th> 
+                    <th> side 4</th> 
+                    <th> totalt</th> 
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>4x2</th>
-                    <th><%=session.getAttribute("four")%></th>
+                    <th><%=session.getAttribute("fourOne")%></th>
+                    <th><%=session.getAttribute("fourTwo")%></th>
+                    <th><%=session.getAttribute("fourThree")%></th>
+                    <th><%=session.getAttribute("fourFour")%></th>
+                    <th><%=session.getAttribute("fourTotal")%></th>
                 </tr>
                 <tr>
                     <th>2x2</th>
-                    <th><%=session.getAttribute("two")%></th>
+                    <th><%=session.getAttribute("twoOne")%></th>
+                    <th><%=session.getAttribute("twoTwo")%></th>
+                    <th><%=session.getAttribute("twoThree")%></th>
+                    <th><%=session.getAttribute("twoFour")%></th>
+                    <th><%=session.getAttribute("twoTotal")%></th>
                 </tr>    
                 <tr>               
                     <th>1x2</th>
-                    <th><%=session.getAttribute("one")%></th>
+                    <th><%=session.getAttribute("oneOne")%></th>
+                    <th><%=session.getAttribute("oneTwo")%></th>
+                    <th><%=session.getAttribute("oneThree")%></th>
+                    <th><%=session.getAttribute("oneFour")%></th>
+                    <th><%=session.getAttribute("oneTotal")%></th>
                 </tr>
                 <tr>               
                     <th>status</th>
@@ -39,5 +55,10 @@
                 </tr>
             </tbody>
         </table>    
+                
+        <form name="Back" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="Back" />
+            <input type="submit" value="Back" />
+        </form>
     </body>
 </html>

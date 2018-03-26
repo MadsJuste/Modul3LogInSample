@@ -26,9 +26,21 @@ public class List extends Command{
                 User user = (User) session.getAttribute("user");
                 int id = user.getId();
                 Build build = LogicFacade.list(id,oid);
-                session.setAttribute( "four", build.getFour());
-                session.setAttribute( "two", build.getTwo() );
-                session.setAttribute( "one", build.getOne() );
+                session.setAttribute( "fourOne", build.getFourOne());
+                session.setAttribute( "fourTwo", build.getFourTwo());
+                session.setAttribute( "fourThree", build.getFourThree());
+                session.setAttribute( "fourFour", build.getFourFour());
+                session.setAttribute( "twoOne", build.getTwoOne() );
+                session.setAttribute( "twoTwo", build.getTwoTwo() );
+                session.setAttribute( "twoThree", build.getTwoThree() );
+                session.setAttribute( "twoFour", build.getTwoFour() );
+                session.setAttribute( "oneOne", build.getOneOne() );
+                session.setAttribute( "oneTwo", build.getOneTwo() );
+                session.setAttribute( "oneThree", build.getOneThree() );
+                session.setAttribute( "oneFour", build.getOneFour() );
+                session.setAttribute( "fourTotal", build.getFourTotal());
+                session.setAttribute( "twoTotal", build.getTwoTotal());
+                session.setAttribute( "oneTotal", build.getOneTotal());
                 session.setAttribute( "status", build.getStatus() );
         return "tablepage";
     }
