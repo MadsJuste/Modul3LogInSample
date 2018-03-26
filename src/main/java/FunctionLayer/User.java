@@ -17,6 +17,7 @@ public class User {
     private String password; // Should be hashed and all
     private String role;
 
+    
     public String getEmail() {
         return email;
     }
@@ -48,5 +49,6 @@ public class User {
     public void setId( int id ) {
         this.user_id = id;
     }
+
 
 }

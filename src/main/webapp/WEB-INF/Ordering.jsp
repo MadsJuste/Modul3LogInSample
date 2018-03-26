@@ -12,13 +12,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Choose size of the house. Length and width in number of dots and hight in numbers of blocks </h2>
-        <form action="FrontController" method="post">
-            <input type="text" name="length" value="" placeholder="length" />
-            <input type="text" name="width" value="" placeholder="width" />
-            <input type="text" name="hight" value="" placeholder="hight" />
-            <input type="hidden" name="origin" value="login" />
-            <input type="submit" value="Build" />
+        <div>
+        <h1>Order Created</h1>
+        
+        <p>Order Created</p>
+        
+         <form name="Back" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="Back" />
+            <input type="submit" value="Back" />
         </form>
+        </div>
     </body>
 </html>

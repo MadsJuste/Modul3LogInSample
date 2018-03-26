@@ -9,26 +9,23 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
-import FunctionLayer.Build;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author Juste
  */
-public class order extends Command{
+public class GetOrders extends Command{
     
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-                int hight = Integer.parseInt(request.getParameter( "hight" ));
-                int width = Integer.parseInt(request.getParameter( "width" ));
-                int length = Integer.parseInt(request.getParameter( "length" )); 
-                HttpSession session = request.getSession();
-                User user = (User) session.getAttribute("user");
-                int id = user.getId();
-                Build build = LogicFacade.build( hight, width, length, id );
-        return "Ordering";
-    }
-    
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int id = user.getId();
+            int rows = LogicFacade.rows(id);
+            session.setAttribute("rows",rows);
+        return "ordertable";
+    } 
 }

@@ -62,15 +62,13 @@ public class UserMapper {
     public static Build build(Build build, int id) throws LoginSampleException{
          try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO `order` (length, width, hight, fourblock, twoblock, oneblock, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO `order` (length, width, hight, user_id, status) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL);
             ps.setInt(1,build.getLength());
             ps.setInt(2,build.getWidth());
             ps.setInt(3,build.getHight());
-            ps.setInt(4,build.getFour());
-            ps.setInt(5,build.getTwo());
-            ps.setInt(6,build.getOne());
-            ps.setInt(7,id);
+            ps.setInt(4,id);
+            ps.setInt(5,0);
             
             ps.executeUpdate();
           
@@ -79,5 +77,46 @@ public class UserMapper {
             throw new LoginSampleException( ex.getMessage());
         }   
     }
-
+    
+    public static Build list(int id, int oid) throws LoginSampleException {
+       try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM `order` WHERE order_id=? AND user_id=?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setInt( 1, oid);
+            ps.setInt( 2, id);
+            ResultSet rs = ps.executeQuery();
+             if ( rs.next() ) {
+                     int length = rs.getInt( "length" );
+                     int width = rs.getInt("width");
+                     int hight = rs.getInt("hight");
+                     int status = rs.getInt("status");
+                     Build build = new Build (hight, width, length, status);
+            return build;
+             } else {
+                throw new LoginSampleException( "Could not validate user" );
+            }
+          
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LoginSampleException("WHAT THE FUVK" + ex.getMessage());
+        }
+    }
+    
+    public static int rows(int id) throws LoginSampleException {
+        try {
+            int rows = 0;
+            Connection con = Connector.connection();
+            String SQL = "SELECT count(*) FROM `order` WHERE user_id=?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setInt( 1, id );
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                rows = rs.getInt("count(*)");
+                return rows;
+            }
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+        return 0;
+    }
 }

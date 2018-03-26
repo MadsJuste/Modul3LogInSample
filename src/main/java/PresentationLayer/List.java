@@ -5,30 +5,31 @@
  */
 package PresentationLayer;
 
-
+import FunctionLayer.Build;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
-import FunctionLayer.Build;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author Juste
  */
-public class order extends Command{
+public class List extends Command{
     
-    @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
-                int hight = Integer.parseInt(request.getParameter( "hight" ));
-                int width = Integer.parseInt(request.getParameter( "width" ));
-                int length = Integer.parseInt(request.getParameter( "length" )); 
+     @Override
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException { 
+                int oid = Integer.parseInt(request.getParameter( "orderID" ));
                 HttpSession session = request.getSession();
                 User user = (User) session.getAttribute("user");
                 int id = user.getId();
-                Build build = LogicFacade.build( hight, width, length, id );
-        return "Ordering";
+                Build build = LogicFacade.list(id,oid);
+                session.setAttribute( "four", build.getFour());
+                session.setAttribute( "two", build.getTwo() );
+                session.setAttribute( "one", build.getOne() );
+                session.setAttribute( "status", build.getStatus() );
+        return "tablepage";
     }
-    
 }

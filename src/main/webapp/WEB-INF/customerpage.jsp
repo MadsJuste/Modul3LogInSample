@@ -12,7 +12,7 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Hello <%=request.getParameter( "email" )%> </h1>
+       <h1>Hello <%=session.getAttribute( "email" )%> </h1>
         You are now logged in as a customer of our wonderful site.
         
         <h2>Purchase legohouse</h2>
@@ -30,12 +30,22 @@
                     <br>
             <input type="submit" value="purchase" />
         </form>
+       
+         
+        <h2>Find Order</h2>
+        <form name="Find" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="Find" />  
+                length in dots:<br>
+                    <input type="text" name="orderID" value="1">
+                    <br>
+            <input type="submit" value="Find" />
+        </form>
         
         <h2>See privious purchases</h2>
         
-        <form name="checkPur" action="FrontController" method="post">
-            <input type="hidden" name="origin" value="checkPur" />
-            <input type="submit" value="see previous order" />
+        <form name="check" action="FrontController" method="post">
+            <input type="hidden" name="command" value="check" />
+            <input type="submit" value="check" />
         </form>
         
     </body>

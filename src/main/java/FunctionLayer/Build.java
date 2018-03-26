@@ -19,12 +19,14 @@ public class Build {
     private int one;
     private int id;
     private int status;
-    public Build(int hight, int width, int length){
+    public Build(int hight, int width, int length, int status){
         this.hight = hight;
         this.width = width;
         this.length = length;
         setBlocks();
     }
+
+
     
     public void setBlocks(){
         
@@ -57,9 +59,9 @@ public class Build {
             break;       
         }
         
-        one = (length1 + width1) * hight;
-        two = (length2 + width2) * hight;
-        four =(length4 + width4) * hight;
+        one = (length1 + width1) * hight * 2;
+        two = (length2 + width2) * hight * 2;
+        four =(length4 + width4) * hight * 2;
         
         }
     
@@ -136,7 +138,7 @@ public class Build {
         return tempStatus;
     }
     public void setStatus(int status){
-        
+        this.status = status;
     }
     
     

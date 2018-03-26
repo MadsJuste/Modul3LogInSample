@@ -8,12 +8,11 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.Build;
+import PresentationLayer.GetOrders;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -72,17 +71,30 @@ public class UserMapperTest {
     
     @Test
     public void testWrite() throws LoginSampleException {
-        Build build = new Build(2, 8, 12);
+        Build build = new Build(2, 8, 12,0);
         UserMapper.build(build , 1);
         assertTrue(build != null);
     }
-
+    
+    @Test
+    public void testList() throws LoginSampleException{
+       UserMapper.list(2, 2);
+    }
+    
+    
     @Test( expected = LoginSampleException.class )
     public void testLogin02() throws LoginSampleException {
         // We should get an exception if we use the wrong password
         User user = UserMapper.login( "jens@somewhere.com", "larsen" );
     }
-
+    
+    
+    @Test
+    public void testGetRows() throws LoginSampleException{
+        assertTrue(UserMapper.rows(1) != 0);
+        System.out.println("THIS IS THE SHIT" + UserMapper.rows(1));
+    }
+    
     @Test
     public void testLogin03() throws LoginSampleException {
         // Jens is supposed to be a customer

@@ -19,14 +19,11 @@ CREATE TABLE `order`(
 `length` int(11) NOT NULL,
 `width` int(11) NOT NULL,
 `hight` int(11) NOT NULL,
-`fourblock` int(11) NOT NULL,
-`twoblock` int(11) NOT NULL,
-`oneblock` int(11) NOT NULL,
 `user_id` int(11) NOT NULL,
 `status` int(11) NOT NULL,
 PRIMARY KEY (`order_id`),
 FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
-)ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES 
@@ -35,6 +32,8 @@ INSERT INTO `user` VALUES
 (3,'robin@somewhere.com','batman','employee');
 LOCK TABLES `order` WRITE;
 INSERT INTO `order` VALUES
-(1,4,4,1,2,2,0,1,0);
+(1,4,4,1,1,0),
+(2,20,12,19,2,2),
+(3,17,13,2,2,1);
 UNLOCK TABLES;
 
