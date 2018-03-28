@@ -28,6 +28,7 @@ public class order extends Command{
                 User user = (User) session.getAttribute("user");
                 int id = user.getId();
                 Build build = LogicFacade.build( hight, width, length, id );
+                session.setAttribute("order_id", build.getID());
         return "Ordering";
     }
     

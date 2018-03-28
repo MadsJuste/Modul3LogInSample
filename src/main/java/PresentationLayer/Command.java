@@ -17,6 +17,7 @@ abstract class Command {
         commands.put( "check", new GetOrders() );
         commands.put( "Back", new Back());
         commands.put( "Find", new List());
+        commands.put( "Set", new setStatus());
     }
 
     static Command from( HttpServletRequest request ) {

@@ -31,5 +31,9 @@ public class LogicFacade {
     public static int rows(int id) throws LoginSampleException{
         return UserMapper.rows(id);
     }
+    
+    public static void setStatus(int oid) throws LoginSampleException{
+        UserMapper.setStatus(oid);
+    }
 
 }

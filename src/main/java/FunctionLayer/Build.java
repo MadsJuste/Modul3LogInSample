@@ -88,6 +88,23 @@ public class Build {
         oneTotal = oneOne + oneTwo + oneThree + oneFour;
         twoTotal = twoOne + twoTwo + twoThree + twoFour;
         fourTotal = fourOne + fourTwo + fourThree + fourFour;
+        
+        if(length%4 == 0){
+            fourTwo = fourTwo - 1;
+            fourFour = fourFour -1;
+            twoTwo = twoTwo +1;
+            twoFour = twoFour +1;
+            oneTwo = oneTwo +2;
+            oneFour = oneFour +2; 
+        }
+        if(width%4 == 0){
+            fourOne = fourOne - 1;
+            fourThree = fourThree -1;
+            twoOne = twoOne +1;
+            twoThree = twoThree +1;
+            oneOne = oneOne +2;
+            oneThree = oneThree +2; 
+        }
         }
     
     

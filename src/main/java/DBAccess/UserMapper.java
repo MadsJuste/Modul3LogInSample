@@ -119,4 +119,17 @@ public class UserMapper {
         }
         return 0;
     }
+
+    public static void setStatus(int oid) throws LoginSampleException {
+        try{
+            Connection con = Connector.connection();
+            String SQL = "UPDATE `order` SET status=1 WHERE order_id=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1 ,oid);
+            ps.executeUpdate();
+        } catch(ClassNotFoundException | SQLException ex){
+            throw new LoginSampleException(ex.getMessage());
+        }
+       
+    }
 }

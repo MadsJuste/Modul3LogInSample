@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Ordering
-    Created on : 25-03-2018, 22:48:02
+    Document   : statuschanged
+    Created on : 28-03-2018, 14:34:26
     Author     : Juste
 --%>
 
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
+      <body>
         <div>
         <h1>Order <%=session.getAttribute("order_id")%> Created</h1>
         

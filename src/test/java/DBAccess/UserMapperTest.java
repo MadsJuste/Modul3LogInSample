@@ -88,6 +88,11 @@ public class UserMapperTest {
         User user = UserMapper.login( "jens@somewhere.com", "larsen" );
     }
     
+    @Test
+    public void testSetStatus() throws LoginSampleException{
+        UserMapper.setStatus(14);
+    }
+    
     
     @Test
     public void testGetRows() throws LoginSampleException{
