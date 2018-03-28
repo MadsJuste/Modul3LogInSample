@@ -15,9 +15,6 @@
     </head>
     <body>
         <div>
-        <% if(session.getAttribute("okay").equals("notok")){ %>
-        <h5>Please enter a valid ORDER ID</h5>
-        <% } %>
         <table id="table">
             <thead>
                 <tr>
@@ -25,15 +22,17 @@
                 </tr>
             </thead>
             <tbody>
-             <tr>
                  <% ArrayList order = (ArrayList)session.getAttribute("list");
                  for (int i = 0; i < order.size(); i++){ %>
-                 <td> <%=order.get(i)%> </td> 
-                 <br>
-                 <%  } %>
-                    
-             </tr>
-          
+                 <tr>
+                    <td> <%=order.get(i)%> </td>
+                    <br>
+                 </tr>
+                 <tr>
+                     <td><%=order.get(++i)%></td>
+                    <br>
+                 </tr>
+                 <%  } %>              
             </tbody>
         </table>
                  
@@ -45,6 +44,9 @@
                     <br>
             <input type="submit" value="Find" />
         </form>
+         <% if(session.getAttribute("okay").equals("notok")){ %>
+        <h5>Please enter a valid ORDER ID</h5>
+        <% } %>
         </div>
     </body>
 </html>
