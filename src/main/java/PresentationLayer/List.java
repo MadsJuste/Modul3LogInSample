@@ -9,6 +9,9 @@ import FunctionLayer.Build;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.WrongOrderException;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,11 +23,13 @@ import javax.servlet.http.HttpSession;
 public class List extends Command{
     
      @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException { 
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws WrongOrderException { 
                 int oid = Integer.parseInt(request.getParameter( "orderID" ));
                 HttpSession session = request.getSession();
                 User user = (User) session.getAttribute("user");
                 int id = user.getId();
+                ArrayList<Integer> list = new ArrayList<Integer>((Collection<? extends Integer>) session.getAttribute("list"));    
+                if(list.contains(oid)){
                 Build build = LogicFacade.list(id,oid);
                 session.setAttribute( "fourOne", build.getFourOne());
                 session.setAttribute( "fourTwo", build.getFourTwo());
@@ -42,6 +47,11 @@ public class List extends Command{
                 session.setAttribute( "twoTotal", build.getTwoTotal());
                 session.setAttribute( "oneTotal", build.getOneTotal());
                 session.setAttribute( "status", build.getStatus() );
-        return "tablepage";
+                session.setAttribute("okay", "ok");
+                return "tablepage";
+                }else{
+                    session.setAttribute("okay", "notok");
+                    return "getOrderList";
+                }
     }
 }

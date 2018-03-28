@@ -3,13 +3,14 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.Build;
+import FunctionLayer.WrongOrderException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+
 
 /**
  The purpose of UserMapper is to...
@@ -78,7 +79,7 @@ public class UserMapper {
         }   
     }
     
-    public static Build list(int id, int oid) throws LoginSampleException {
+    public static Build list(int id, int oid) throws WrongOrderException {
        try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM `order` WHERE order_id=? AND user_id=?";
@@ -94,11 +95,11 @@ public class UserMapper {
                      Build build = new Build (hight, width, length, status);
             return build;
              } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new WrongOrderException( "Invalid order id" );
             }
           
         } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new LoginSampleException("WHAT THE FUVK" + ex.getMessage());
+            throw new WrongOrderException(ex.getMessage());
         }
     }
     
@@ -120,7 +121,7 @@ public class UserMapper {
         return 0;
     }
 
-    public static void setStatus(int oid) throws LoginSampleException {
+    public static void setStatus(int oid) throws WrongOrderException {
         try{
             Connection con = Connector.connection();
             String SQL = "UPDATE `order` SET status=1 WHERE order_id=?";
@@ -128,8 +129,41 @@ public class UserMapper {
             ps.setInt(1 ,oid);
             ps.executeUpdate();
         } catch(ClassNotFoundException | SQLException ex){
-            throw new LoginSampleException(ex.getMessage());
+            throw new WrongOrderException(ex.getMessage());
         }
        
+    }
+    
+    public static ArrayList<Integer> orderList(int id, String role) throws LoginSampleException {
+       try {
+            Connection con = Connector.connection();
+            if(role.equals("customer")){
+            String SQL = "SELECT order_id FROM `order` WHERE user_id=?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ps.setInt( 1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            ArrayList<Integer> tempArray = new ArrayList<Integer>();
+            while( rs.next() ) {
+                     int orderid = rs.getInt("order_id");
+                     tempArray.add(orderid);
+            }
+            return tempArray;
+            }else{
+                 String SQL = "SELECT order_id FROM `order`";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            ResultSet rs = ps.executeQuery();
+
+            ArrayList<Integer> tempArray2 = new ArrayList<Integer>();
+            while( rs.next() ) {
+                     int orderid = rs.getInt("order_id");
+                     tempArray2.add(orderid);
+            }
+            return tempArray2;
+            }
+          
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LoginSampleException(ex.getMessage());
+        }
     }
 }

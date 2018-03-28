@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="LegoStyle.css" rel="stylesheet" type="text/css"/>
         <title>Customer home page</title>
     </head>
     <body>
-       <h1>Hello <%=session.getAttribute( "email" )%> </h1>
-        You are now logged in as a customer of our wonderful site.
-        
+        <div>
+       <h1>Welcome to our site you may now order or check previous purcahse </h1>
         <h2>Purchase legohouse</h2>
-        
+       
         <form name="purchase" action="FrontController" method="post">        
             <input type="hidden" name="command" value="purchase" />
                     Hight in blocks:<br>
@@ -32,13 +32,10 @@
         </form>
        
          
-        <h2>Find Order</h2>
-        <form name="Find" action="FrontController" method="post">        
-            <input type="hidden" name="command" value="Find" />  
-                Order ID:<br>
-                    <input type="text" name="orderID" value="1">
-                    <br>
-            <input type="submit" value="Find" />
+        <h2>Get Order List</h2>
+        <form name="getList" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="getList" />  
+            <input type="submit" value="getList" />
         </form>
         
         <h2>See privious purchases</h2>
@@ -50,6 +47,6 @@
                     <br>
             <input type="submit" value="check" />
         </form>
-        
+      </div>  
     </body>
 </html>

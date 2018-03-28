@@ -9,23 +9,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="LegoStyle.css" rel="stylesheet" type="text/css"/>
         <title>Employee home page</title>
     </head>
     <body>
-        
+        <div>
         <h1>Hello <%=session.getAttribute( "email")%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
         
         
-         <h2>Find Order</h2>
-        <form name="Find" action="FrontController" method="post">        
-            <input type="hidden" name="command" value="Find" />  
-                Order ID:<br>
-                    <input type="text" name="orderID" value="1">
-                    <br>
-            <input type="submit" value="Find" />
+         <h2>Get Order List</h2>
+        <form name="getList" action="FrontController" method="post">        
+            <input type="hidden" name="command" value="getList" />  
+            <input type="submit" value="getList" />
         </form>
          
+          
          
          <h2>Set Order</h2>
          <form name="Set" action="FrontController" method="post">
@@ -35,5 +34,6 @@
                 <br>
              <input type="submit" value="Set" />     
          </form>
+         </div>
     </body>
 </html>

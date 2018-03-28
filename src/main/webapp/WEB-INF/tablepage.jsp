@@ -9,11 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="LegoStyle.css" rel="stylesheet" type="text/css"/>
+        <title>Styklist page</title>
     </head>
     <body>
+        <div>
         <h1>Table for order <%=request.getParameter("orderID")%></h1>
-        <table border = "1">
+        <table id="table" border = "1">
             <thead>
                 <tr>
                     <th> type </th>
@@ -60,5 +62,6 @@
             <input type="hidden" name="command" value="Back" />
             <input type="submit" value="Back" />
         </form>
+                </div>
     </body>
 </html>

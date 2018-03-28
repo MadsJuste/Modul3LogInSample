@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="LegoStyle.css" rel="stylesheet" type="text/css"/>
+        <title>Order Complete</title>
     </head>
     <body>
         <div>

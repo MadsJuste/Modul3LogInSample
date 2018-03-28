@@ -8,6 +8,7 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import FunctionLayer.Build;
+import FunctionLayer.WrongOrderException;
 import PresentationLayer.GetOrders;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -77,7 +78,7 @@ public class UserMapperTest {
     }
     
     @Test
-    public void testList() throws LoginSampleException{
+    public void testList() throws WrongOrderException{
        UserMapper.list(2, 2);
     }
     
@@ -89,7 +90,7 @@ public class UserMapperTest {
     }
     
     @Test
-    public void testSetStatus() throws LoginSampleException{
+    public void testSetStatus() throws WrongOrderException{
         UserMapper.setStatus(14);
     }
     

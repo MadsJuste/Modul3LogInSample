@@ -1,6 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.WrongOrderException;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ abstract class Command {
         commands.put( "Back", new Back());
         commands.put( "Find", new List());
         commands.put( "Set", new setStatus());
+        commands.put( "getList", new getOrderLidt());
     }
 
     static Command from( HttpServletRequest request ) {
@@ -29,6 +31,7 @@ abstract class Command {
     }
 
     abstract String execute( HttpServletRequest request, HttpServletResponse response ) 
-            throws LoginSampleException;
+            throws LoginSampleException, WrongOrderException;
+   
 
 }

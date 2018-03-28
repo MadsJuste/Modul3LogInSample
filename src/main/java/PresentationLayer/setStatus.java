@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.WrongOrderException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpSession;
  */
 public class setStatus extends Command{
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException {
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LoginSampleException, WrongOrderException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         int oid = Integer.parseInt(request.getParameter( "order_id" ));
